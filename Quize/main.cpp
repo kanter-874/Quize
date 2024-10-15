@@ -1,14 +1,14 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<vector>
 #include<random>
 using namespace std;
 
-//–â‘è•¶‚Æ“š‚¦‚ğ‚Ü‚Æ‚ß‚é\‘¢‘Ì
+//å•é¡Œæ–‡ã¨ç­”ãˆã‚’ã¾ã¨ã‚ã‚‹æ§‹é€ ä½“
 struct Question
 {
-	string q; //–â‘è•¶
-	int a;	  //“š‚¦
+	string q; //å•é¡Œæ–‡
+	string a;	  //ç­”ãˆ
 };
 
 int main()
@@ -18,60 +18,58 @@ int main()
 	random_device rd;
 	mt19937 rand(rd());
 
-	//Š|‚¯Z
+	//æ›ã‘ç®—
 	int x = uniform_int_distribution<>(1, 30)(rand);
 	int y = uniform_int_distribution<>(1, 20)(rand);
-	questions[0].q = to_string(x) + "x" + to_string(y) + "‚Ì“š‚¦‚ÍH\n";
-	questions[0].a = x * y;
+	questions[0].q = to_string(x) + "x" + to_string(y) + "ã®ç­”ãˆã¯ï¼Ÿ\n";
+	questions[0].a = to_string(x * y);
 
-	//Š„‚èZ
+	//å‰²ã‚Šç®—
 	x = uniform_int_distribution<>(1, 30)(rand);
 	y = uniform_int_distribution<>(1, 20)(rand);
-	questions[1].q = to_string(x * y) + "€" + to_string(y) + "‚Ì“š‚¦‚ÍH\n";
-	questions[1].a = x;
+	questions[1].q = to_string(x * y) + "Ã·" + to_string(y) + "ã®ç­”ãˆã¯ï¼Ÿ\n";
+	questions[1].a = to_string(x);
 
-	//•¡G‚È®
+	//è¤‡é›‘ãªå¼
 	x = uniform_int_distribution<>(1, 100)(rand);
 	y = uniform_int_distribution<>(1, 10)(rand);
 	int z = uniform_int_distribution<>(1, 10)(rand);
 	int w = uniform_int_distribution<>(1, 10)(rand);
-	questions[2].q = to_string(x) + "-(" + to_string(y * w) + " + " + to_string(z * w) + ")€" + to_string(w) + "‚Ì“š‚¦‚ÍH\n";
-	questions[2].a = x - (y + z);
+	questions[2].q = to_string(x) + "-(" + to_string(y * w) + " + " + to_string(z * w) + ")Ã·" + to_string(w) + "ã®ç­”ãˆã¯ï¼Ÿ\n";
+	questions[2].a = to_string(x - (y + z));
 
-	//OŠpŒ`‚Ì–ÊÏ
-	x = uniform_int_distribution<>(1, 10)(rand);
-	y = uniform_int_distribution<>(1, 5)(rand) * 2;
-	questions.push_back({
-		"–ÊÏ" + to_string(x * y / 2) + "cmO2A’ê•Ó" + to_string(y) + "cm‚ÌOŠpŒ`‚Ì‚‚³‚ğ‹‚ß‚æB",
-		x });
+	// ä¸‰è§’å½¢ã®é¢ç©
+	int base = uniform_int_distribution<>(1, 10)(rand); // åº•è¾º
+	int height = uniform_int_distribution<>(1, 5)(rand) * 2; // é«˜ã•
+	double triangle_area = static_cast<double>(base * height) / 2.0; // é¢ç©
+	questions.push_back({ "é¢ç©ã‚’æ±‚ã‚ã‚ˆã€‚åº•è¾º " + to_string(base) + " cmã€é«˜ã• " + to_string(height) + " cm ã®ä¸‰è§’å½¢ã€‚\n", to_string(triangle_area) });
 
-	//‰~‚Ì‘ÌÏ
-	x = uniform_int_distribution<>(1, 10)(rand);
-	y = uniform_int_distribution<>(1, 5)(rand) * 3;
-	questions.push_back({
-		"’ê–Ê‚Ì”¼Œa" + to_string(x) + "cmA‚‚³" + to_string(y) + "cm‚Ì‰~‚ª‚ ‚éB\n" + "‚±‚Ì‰~‚Ì‘ÌÏ‚ğXƒÎcm^3‚Æ‚·‚éBX‚Ì’l‚ğ‹‚ß‚æB",
-		x * x * y / 3});
+	// å††éŒã®ä½“ç©
+	int radius = uniform_int_distribution<>(1, 10)(rand); // åŠå¾„
+	int cone_height = uniform_int_distribution<>(1, 5)(rand) * 3; // é«˜ã•
+	double cone_volume = static_cast<double>(radius * radius * cone_height) / 3.0; // ä½“ç©
+	questions.push_back({ "åº•é¢ã®åŠå¾„ " + to_string(radius) + " cmã€é«˜ã• " + to_string(cone_height) + " cm ã®å††éŒãŒã‚ã‚‹ã€‚\nã“ã®å††éŒã®ä½“ç©ã‚’ XÏ€ cmÂ³ ã¨ã™ã‚‹ã€‚X ã®å€¤ã‚’æ±‚ã‚ã‚ˆã€‚\n", to_string(cone_volume) });
 
-	//‹…‚Ì–ÊÏ
-	x = uniform_int_distribution<>(1, 5)(rand) * 3;
-	questions.push_back({
-		"”¼Œa" + to_string(x) + "cm‚Ì‹…‚ª‚ ‚é\n" + "‚±‚Ì‹…‚Ì‘ÌÏ‚ğXƒÎcm^3‚Æ‚·‚éBX‚Ì’l‚ğ‹‚ß‚æB",
-		x * x * x * 4 / 3 });
+	// çƒã®ä½“ç©
+	int sphere_radius = uniform_int_distribution<>(1, 5)(rand) * 3; // åŠå¾„
+	double sphere_volume = static_cast<double>(sphere_radius * sphere_radius * sphere_radius * 4) / 3.0; // ä½“ç©
+	questions.push_back({ "åŠå¾„ " + to_string(sphere_radius) + " cm ã®çƒãŒã‚ã‚‹ã€‚\nã“ã®çƒã®ä½“ç©ã‚’ XÏ€ cmÂ³ ã¨ã™ã‚‹ã€‚X ã®å€¤ã‚’æ±‚ã‚ã‚ˆã€‚\n", to_string(sphere_volume) });
 
-	cout << "[ƒŠƒNƒ‹[ƒgŒ±‘ÎôƒNƒCƒY]\n";
+
+	cout << "[ãƒªã‚¯ãƒ«ãƒ¼ãƒˆè©¦é¨“å¯¾ç­–ã‚¯ã‚¤ã‚º]\n";
 
 	for (const auto& e : questions)
 	{
 		cout << e.q << "\n";
-		int answer;
+		string answer;
 		cin >> answer;
 		if (answer == e.a)
 		{
-			cout << "³‰ğ!\n";
+			cout << "æ­£è§£!\n";
 		}
 		else
 		{
-			cout << "ŠÔˆá‚¢I³‰ğ‚Í" << e.a << "\n";
+			cout << "é–“é•ã„ï¼æ­£è§£ã¯" << e.a << "\n";
 		}
 	}//for questions
 }
