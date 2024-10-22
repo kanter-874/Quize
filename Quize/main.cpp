@@ -1,15 +1,11 @@
-﻿#include<iostream>
+﻿#include "question.h"
+#include<iostream>
 #include<string>
 #include<vector>
 #include<random>
 using namespace std;
 
-//問題文と答えをまとめる構造体
-struct Question
-{
-	string q; //問題文
-	string a;	  //答え
-};
+
 
 //最大公約数を求める
 int gcd(int a, int b)
