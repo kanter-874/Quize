@@ -127,8 +127,8 @@ QuestionList CreateIdiomExam()
 		for (int j = 0; j < 3; j++)
 		{
 			s += "\n  " + to_string(j + 1) + ":" + data[answers[j]].meaning;
-			questions.push_back({ s, to_string(correctNo) });
 		}
-		return questions;
+		questions.push_back({ s, to_string(correctNo) });
 	}
+		return questions;
 }
