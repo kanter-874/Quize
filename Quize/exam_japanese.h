@@ -9,3 +9,6 @@ QuestionList CreateIdiomExam();
 
 //“¯‚¶“Ç‚İ‚ÅˆÓ–¡‚ÌˆÙ‚È‚éŒê‚Ì–â‘è‚ğì¬‚·‚é
 QuestionList CreateHomophoneExam();
+
+// ‘Î‹`Œê‚Ì–â‘è‚ğì¬‚·‚é
+QuestionList CreateAntonymExam();
