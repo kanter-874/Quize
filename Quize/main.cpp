@@ -28,6 +28,9 @@ int main()
 	random_device rd;
 	mt19937 rand(rd());
 
+	int score = 0;
+	int miss = 0;
+
 	//掛け算
 	int x = uniform_int_distribution<>(1, 30)(rand);
 	int y = uniform_int_distribution<>(1, 20)(rand);
@@ -128,10 +131,27 @@ int main()
 		if (answer == e.a)
 		{
 			cout << "正解!\n";
+			score++;
 		}
 		else
 		{
 			cout << "間違い！正解は" << e.a << "\n";
+			miss++;
 		}
 	}//for questions
+
+	if ((score + miss) / 3 <= 10)
+	{
+		cout << score + miss << "問中" << score << "点だよ まだまだだね" << endl;
+	}
+
+	else if ((score + miss) / 3 > 10 && ((score + miss) / 3 < 20 || (score + miss) / 3 < 7))
+	{
+		cout << score + miss << "問中" << score << "点だよ 結構やるやん" << endl;
+	}
+
+	else
+	{
+		cout << score + miss << "問中" << score << "点だよ 完璧やな" << endl;
+	}
 }
