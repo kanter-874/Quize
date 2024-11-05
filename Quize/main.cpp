@@ -122,6 +122,8 @@ int main()
 		questions.insert(questions.end(), antonymExam.begin(), antonymExam.end());
 		QuestionList synonymExam = CreateSynonymExam();
 		questions.insert(questions.end(), synonymExam.begin(), synonymExam.end());
+		QuestionList phraseExam = CreateEnglishPhraseExam();
+		questions.insert(questions.end(), phraseExam.begin(), phraseExam.end());
 	}
 
 	else if (subject == 3)
