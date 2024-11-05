@@ -1,5 +1,6 @@
 ﻿#include "question.h"
 #include "exam_japanese.h"
+#include "exam_english.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -107,7 +108,7 @@ int main()
 
 	cout << "[リクルート試験対策クイズ]\n";
 
-	cout << "教科を選んでください\n1=数学\n2=国語\n";
+	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n";
 	int subject;
 	cin >> subject;
 	if (subject == 2)
@@ -121,6 +122,11 @@ int main()
 		questions.insert(questions.end(), antonymExam.begin(), antonymExam.end());
 		QuestionList synonymExam = CreateSynonymExam();
 		questions.insert(questions.end(), synonymExam.begin(), synonymExam.end());
+	}
+
+	else if (subject == 3)
+	{
+		questions = CreateEnglishWordExam();
 	}
 
 	for (const auto& e : questions)
