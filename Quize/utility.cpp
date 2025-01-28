@@ -76,3 +76,41 @@ vector<string> Split(const string & s, char c)
 	
 	return v; // 分割した文字列を返す
 }
+
+/*
++* SJIS数値文字列をASCII数値文字列に変換する
++*/
+std::string ConvertSjisNumberToAscii(const std::string& sjis)
+{
+  // 数値文字のSJISからASCIIへの変換表
+  static const struct {
+    unsigned int sjis;
+    char ascii;
+  } conversionTable[] = {
+    { 0x824f, '0' }, { 0x8250, '1' }, { 0x8251, '2' }, { 0x8252, '3' }, { 0x8253, '4' },
+    { 0x8254, '5' }, { 0x8255, '6' }, { 0x8256, '7' }, { 0x8257, '8' }, { 0x8258, '9' },
+    { 0x8144, '.'}, {0x817c, '-'},
+  };
+
+  // 文字コードを変換
+  string ascii;
+  for (auto i = sjis.begin(); i != sjis.end(); i++) {
+    const unsigned char a = i[0];
+    if (a < 0x80) {
+      // ASCII文字の場合はそのままコピーする
+      ascii.push_back(*i);
+    } else {
+      // SJIS文字の場合はASCII文字に変換する
+      const unsigned int code = a * 0x100 + (unsigned char)i[1];
+      const auto itr = find_if(begin(conversionTable), end(conversionTable),
+        [code](const auto& e) { return e.sjis == code; });
+      if (itr == end(conversionTable)) {
+        break; // 変換できない文字が見つかったら変換を打ち切る
+      }
+      ascii.push_back(itr->ascii);
+      i++; // 2バイト文字なので1バイト余分に進める
+    }
+  } // for i
+
+  return ascii;
+}

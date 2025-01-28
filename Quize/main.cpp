@@ -4,6 +4,7 @@
 #include "exam_science.h"
 #include "exam_geography.h"
 #include "exam_politics.h"
+#include "utility.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -154,6 +155,14 @@ int main()
 		cout << e.q << "\n";
 		string answer;
 		cin >> answer;
+
+    // 入力された答えをSJISからASCIIに変換する
+    const string ascii = ConvertSjisNumberToAscii(answer);
+    // 変換が成功した場合はASCII文字列に置き換える
+    if ( ! ascii.empty()) {
+      answer = ascii;
+    }
+
 		if (answer == e.a)
 		{
 			cout << "正解!\n";
