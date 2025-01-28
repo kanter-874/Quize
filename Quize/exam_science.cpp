@@ -218,6 +218,17 @@ QuestionList CreatePhysicsExam()
 			"なお、重力加速度gと円周率πについて、π = √gが成り立つものとする。",
 			to_string(2 * l) });
 
+			l = uniform_int_distribution<>(1, 10)(rd); // 長さ(m)
+			m = uniform_int_distribution<>(1, 10)(rd); // 質量(kg)
+			int max_v = (int)sqrt(20 * l); // 速度の上限(2gh=v^2を根拠とする)
+			int v = uniform_int_distribution<>(1, max_v)(rd); // 速度
+			questions.push_back({
+			"重力加速度を10m/s^2とする。\n長さ" + to_string(l) + "mの糸に質量" + to_string(m) +
+			"kgのおもりをつけた振り子がある。\nこのおもりを最下点から高さ" +
+			to_string(v * v * 100 / 20) + "cmの位置で静かに放した。\n" +
+			"このとき、おもりが最下点を通過するときの速度をm/s単位で求めよ。",
+			to_string(v) });
+
 
 		} // 振り子
 	
