@@ -36,6 +36,9 @@
     <ClCompile Include="exam_politics.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="exam_economics.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="question.h">
@@ -57,6 +60,9 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="exam_politics.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="exam_economics.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
