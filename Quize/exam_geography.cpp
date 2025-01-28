@@ -44,7 +44,7 @@ QuestionList CreatePrefecturesExam()
 	vector<int> indices = CreateRandomIndices((int)data.size());
 	random_device rd;
 	
-	const int type = 2; // uniform_int_distribution<>(0, 2)(rd);
+	const int type = uniform_int_distribution<>(0, 2)(rd);
 
 	switch (type) 
 	{
